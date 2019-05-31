@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sibling_id: 1
+  when: 2019-05-28
+  what: MyString
+  to_whom: MyString
+  points: 1
+
+two:
+  sibling_id: 1
+  when: 2019-05-28
+  what: MyString
+  to_whom: MyString
+  points: 1

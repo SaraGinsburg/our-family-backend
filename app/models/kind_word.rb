@@ -1,0 +1,2 @@
+class KindWord < ApplicationRecord
+end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  when: 2019-05-30
+  what: MyString
+  picture: MyString
+  sibling_id: 1
+
+two:
+  when: 2019-05-30
+  what: MyString
+  picture: MyString
+  sibling_id: 1
