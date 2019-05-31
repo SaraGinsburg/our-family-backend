@@ -1,10 +1,9 @@
 class Api::V1::SiblingsController < ApplicationController
-  before_action :set_sibling, only: [:show, :update, :destroy]
+  before_action :set_sibling, only: [:show, :update]
 
   # GET /siblings
   def index
     @siblings = Sibling.all
-
     render json: @siblings
   end
 
@@ -33,10 +32,8 @@ class Api::V1::SiblingsController < ApplicationController
     end
   end
 
-  # DELETE /siblings/1
-  def destroy
-    @sibling.destroy
-  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
