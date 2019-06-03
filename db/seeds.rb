@@ -12,3 +12,12 @@ Sibling.create(parent_id:1, first_name:"Hadassah'le", last_name:"Shapiro", birth
 Sibling.create(parent_id:1, first_name:"Dovid", last_name:"Shapiro", birthdate:Date.strptime('7-5-2013', '%d-%m-%Y'), points_earned:0)
 Sibling.create(parent_id:1, first_name:"Shneor", last_name:"Shapiro", birthdate:Date.strptime('11-9-2007', '%d-%m-%Y'), points_earned:0)
 Sibling.create(parent_id:1, first_name:"Meir", last_name:"Shapiro", birthdate:Date.strptime('11-9-2007', '%d-%m-%Y'), points_earned:0)
+
+dovid.milestones.create(when:"2019-06-02", what:"birthday party with friends", picture:"https://photos.google.com/album/AF1QipPKge-I_LCyoOtJ6C2dYHOswQysH3mo76htEE53")
+dovid.niceDeed(when:"2019-05-24", what:"shared his chocolate bar with Menachem", to_whom: "Menachem", points:1 )
+mussiale = Sibling.find(7)
+menachem = Sibling.find(8)
+hadassah = Sibling.find(9)
+dovid = Sibling.find(10)
+shneor= Sibling.find(11)
+meir= Sibling.find(12)

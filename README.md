@@ -1,22 +1,22 @@
-# README
+## README
 
-# Routes for :
-  ## GET /api/sibling
-  ## GET /api/sibling/:id
-  ## POST /api/sibling
-  ## PUT /api/sibling/:id
+### Routes for :
+  #### GET /api/sibling
+  #### GET /api/sibling/:id
+  #### POST /api/sibling
+  #### PUT /api/sibling/:id
 
-  ## GET /api/niceDeed
-  ## GET /api/niceDeed/:id
-  ## POST /api/niceDeed
-  ## PUT /api/niceDeed/:id
-  ## DELETE /api/niceDeed/:id
+  #### GET /api/niceDeed
+  #### GET /api/niceDeed/:id
+  #### POST /api/niceDeed
+  #### PUT /api/niceDeed/:id
+  #### DELETE /api/niceDeed/:id
 
-  ## GET /api/kindWord
-  ## GET /api/kindWord/:id
-  ## POST /api/kindWord
-  ## PUT /api/kindWord/:id
-  ## DELETE /api/kindWord/:id
+  #### GET /api/kindWord
+  #### GET /api/kindWord/:id
+  #### POST /api/kindWord
+  #### PUT /api/kindWord/:id
+  #### DELETE /api/kindWord/:id
 
 # Models
   ## Sibling Model
@@ -84,3 +84,11 @@ Sibling should be able to...
   - look up by name / dates
   - add comments/suggestions about deed or act
   - * - add upvote
+
+  # 2019-06-03
+    - add seed data to children files (niceDeeds, kindWords, milestones)
+    - add serializers -- fast JSON api
+    - mock user login
+    - add Redux and establish store
+    - think about components
+    

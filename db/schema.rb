@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190530183411) do
+ActiveRecord::Schema.define(version: 20190603200700) do
 
   create_table "kind_words", force: :cascade do |t|
     t.integer  "sibling_id"
     t.date     "when"
     t.string   "what"
     t.string   "to_whom"
-    t.integer  "points"
+    t.float    "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20190530183411) do
     t.string   "what"
     t.string   "to_whom"
     t.string   "picture"
-    t.integer  "points"
+    t.float    "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
