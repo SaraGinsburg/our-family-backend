@@ -4,12 +4,16 @@ class Api::V1::SiblingsController < ApplicationController
   # GET /siblings
   def index
     @siblings = Sibling.all
-    render json: @siblings
+    siblings_json =  SiblingSerializer.new(@siblings).serialized_json
+    render json: siblings_json
+    # render json: @siblings
   end
 
   # GET /siblings/1
   def show
-    render json: @sibling
+    sibling_json =  SiblingSerializer.new(@sibling).serialized_json
+    render json: sibling_json
+    # render json: @sibling
   end
 
   # POST /siblings

@@ -5,12 +5,19 @@ class Api::V1::KindWordsController < ApplicationController
   def index
     @kind_words = KindWord.all
 
-    render json: @kind_words
+    kind_words_json =KindWordSerializer.new(@kind_words).serialized_json
+    render json: kind_words_json
+
+    # render json: @kind_words
   end
 
   # GET /kind_words/1
   def show
-    render json: @kind_word
+    # render json: @kind_word
+    kind_word_json =KindWordSerializer.new(@kind_word).serialized_json
+    render json: kind_word_json
+
+
   end
 
   # POST /kind_words

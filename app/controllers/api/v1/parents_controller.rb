@@ -4,13 +4,18 @@ class Api::V1::ParentsController < ApplicationController
   # GET /parents
   def index
     @parents = Parent.all
+    parents_json = ParentSerializer.new(@parents).serialized_json
+    render json: parents_json
 
-    render json: @parents
+    # render json: @parents
   end
 
   # GET /parents/1
   def show
-    render json: @parent
+    parent_json = ParentSerializer.new(@parent).serialized_json
+    render json: parent_json
+
+    # render json: @parent
   end
 
   # POST /parents

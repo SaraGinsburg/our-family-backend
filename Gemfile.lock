@@ -39,12 +39,14 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
-    bcrypt (3.1.12)
+    bcrypt (3.1.13)
     builder (3.2.3)
     byebug (11.0.1)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     erubis (2.7.0)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.11.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -124,6 +126,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
+  fast_jsonapi
   listen (~> 3.0.5)
   puma (~> 3.0)
   rack-cors

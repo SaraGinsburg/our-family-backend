@@ -4,13 +4,18 @@ class Api::V1::MilestonesController < ApplicationController
   # GET /milestones
   def index
     @milestones = Milestone.all
+    milestones_json = MilestoneSerializer.new(@milestones).serialized_json
+    render json: milestones_json
 
-    render json: @milestones
+    # render json: @milestones
   end
 
   # GET /milestones/1
   def show
-    render json: @milestone
+    milestone_json = MilestoneSerializer.new(@milestone).serialized_json
+    render json: milestone_json
+
+    # render json: @milestone
   end
 
   # POST /milestones

@@ -4,13 +4,18 @@ class Api::V1::NiceDeedsController < ApplicationController
   # GET /nice_deeds
   def index
     @nice_deeds = NiceDeed.all
+    nice_deeds_json = NiceDeedSerializer.new(@nice_deeds).serialized_json
+    render json: nice_deeds_json
 
-    render json: @nice_deeds
+    # render json: @nice_deeds
   end
 
   # GET /nice_deeds/1
   def show
-    render json: @nice_deed
+    nice_deed_json = NiceDeedSerializer.new(@nice_deed).serialized_json
+    render json: nice_deed_json
+
+    # render json: @nice_deed
   end
 
   # POST /nice_deeds

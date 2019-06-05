@@ -1,18 +1,26 @@
 Rails.application.routes.draw do
-
-      #
-
   namespace :api  do
     namespace :v1   do
+
       resources :parents do
         resources :siblings, :path => "children"
       end
 
       resources :siblings do
-        resources :milestone
-        resources :kind_words
-        resources :nice_deeds
+        resources :milestones
       end
+
+      resources :siblings do
+        resources :kind_words
+      end
+
+      resources :siblings do
+        resources  :nice_deeds
+      end
+
+      resources :milestones
+      resources :kind_words
+      resources :nice_deeds
 
     end
   end
