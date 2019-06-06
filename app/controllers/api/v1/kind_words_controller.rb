@@ -1,8 +1,13 @@
+require 'pry'
+
 class Api::V1::KindWordsController < ApplicationController
   before_action :set_kind_word, only: [:show, :update, :destroy]
 
+
   # GET /kind_words
   def index
+    binding.pry
+
     @kind_words = KindWord.all
 
     kind_words_json =KindWordSerializer.new(@kind_words).serialized_json
