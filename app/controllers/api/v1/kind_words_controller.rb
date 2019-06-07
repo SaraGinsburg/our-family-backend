@@ -6,7 +6,6 @@ class Api::V1::KindWordsController < ApplicationController
 
   # GET /kind_words
   def index
-    binding.pry
 
     @kind_words = KindWord.all
 

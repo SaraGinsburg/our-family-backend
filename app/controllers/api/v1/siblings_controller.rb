@@ -5,7 +5,6 @@ class Api::V1::SiblingsController < ApplicationController
   def index
     @siblings = Sibling.all
     siblings_json =  SiblingSerializer.new(@siblings).serialized_json
-    binding.pry
     render json: siblings_json
     # render json: @siblings
   end
