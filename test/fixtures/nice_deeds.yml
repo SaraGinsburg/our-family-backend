@@ -1,4 +1,4 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Read about fixtures at http://API.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
   sibling_id: 1
