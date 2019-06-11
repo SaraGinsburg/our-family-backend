@@ -1,4 +1,4 @@
-class api::v1::NiceDeedsController < ApplicationController
+class Api::V1::NiceDeedsController < ApplicationController
   before_action :set_nice_deed, only: [:show, :update, :destroy]
 
   # GET /nice_deeds

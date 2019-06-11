@@ -1,4 +1,4 @@
-class api::v1::MilestonesController < ApplicationController
+class Api::V1::MilestonesController < ApplicationController
   before_action :set_milestone, only: [:show, :update, :destroy]
 
   # GET /milestones
