@@ -44,6 +44,6 @@ class api::v1::SiblingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sibling_params
-      params.require(:sibling).permit(:name, :birthdate, :picture, :points_earned)
+      params.require(:sibling).permit(:first_name, :last_name,  :birthdate, :picture, :points_earned)
     end
 end
