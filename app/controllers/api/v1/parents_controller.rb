@@ -1,4 +1,4 @@
-class Api::V1::ParentsController < ApplicationController
+class api::v1::ParentsController < ApplicationController
   before_action :set_parent, only: [:show, :update, :destroy]
 
   # GET /parents

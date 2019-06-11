@@ -1,6 +1,6 @@
 require 'pry'
 
-class Api::V1::KindWordsController < ApplicationController
+class api::v1::KindWordsController < ApplicationController
   before_action :set_kind_word, only: [:show, :update, :destroy]
 
 

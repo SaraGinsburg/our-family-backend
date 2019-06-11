@@ -1,4 +1,4 @@
-class Api::V1::SiblingsController < ApplicationController
+class api::v1::SiblingsController < ApplicationController
   before_action :set_sibling, only: [:show, :update]
 
   # GET /siblings
