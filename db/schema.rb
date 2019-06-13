@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190603200700) do
+ActiveRecord::Schema.define(version: 20190613144024) do
 
   create_table "kind_words", force: :cascade do |t|
     t.integer  "sibling_id"
@@ -56,10 +56,12 @@ ActiveRecord::Schema.define(version: 20190603200700) do
     t.date     "birthdate"
     t.string   "picture"
     t.string   "points_earned"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "last_name"
     t.integer  "parent_id"
+    t.string   "username"
+    t.string   "password_digest"
   end
 
 end
