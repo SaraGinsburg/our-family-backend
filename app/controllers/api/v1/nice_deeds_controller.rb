@@ -51,6 +51,6 @@ class Api::V1::NiceDeedsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def nice_deed_params
-      params.require(:nice_deed).permit(:sibling_id, :when, :what, :to_whom, :picture, :points)
+      params.require(:nice_deed).permit(:user_id, :when, :what, :to_whom, :picture, :points)
     end
 end

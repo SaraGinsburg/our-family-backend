@@ -1,4 +1,4 @@
 class MilestoneSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :sibling_id, :when, :what, :picture
+  attributes :user_id, :when, :what, :picture
 end

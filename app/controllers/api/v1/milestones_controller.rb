@@ -51,6 +51,6 @@ class Api::V1::MilestonesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def milestone_params
-      params.require(:milestone).permit(:when, :what, :picture, :sibling_id)
+      params.require(:milestone).permit(:when, :what, :picture, :user_id)
     end
 end

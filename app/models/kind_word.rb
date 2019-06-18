@@ -1,3 +1,3 @@
 class KindWord < ApplicationRecord
-  belongs_to :sibling
+  belongs_to :user
 end

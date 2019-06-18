@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190613144024) do
+ActiveRecord::Schema.define(version: 20190614163355) do
 
   create_table "kind_words", force: :cascade do |t|
-    t.integer  "sibling_id"
+    t.integer  "user_id"
     t.date     "when"
     t.string   "what"
     t.string   "to_whom"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20190613144024) do
   end
 
   create_table "nice_deeds", force: :cascade do |t|
-    t.integer  "sibling_id"
+    t.integer  "user_id"
     t.date     "when"
     t.string   "what"
     t.string   "to_whom"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20190613144024) do
     t.string   "picture"
   end
 
-  create_table "siblings", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.date     "birthdate"
     t.string   "picture"

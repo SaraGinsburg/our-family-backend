@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get "/api/v1/login" to: "sessions#create"
+  post "/api/v1/login", to: "api/v1/sessions#create"
+  delete "/api/v1/logout", to: "api/v1/sessions#destroy"
+
   namespace :api  do
     namespace :v1   do
 
-      resources :siblings
+      resources :users
       resources :milestones
       resources :kind_words
       resources :nice_deeds
@@ -14,14 +16,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 # resources :parents do
-#   resources :siblings, :path => "children"
+#   resources :users, :path => "children"
 # end
 #
-# resources :siblings do
+# resources :users do
 #   resources :milestones
 # end
 #
-# resources :siblings do
+# resources :users do
 #   resources :kind_words
 # end
 #

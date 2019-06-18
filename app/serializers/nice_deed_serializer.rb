@@ -1,4 +1,4 @@
 class NiceDeedSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :sibling_id, :when, :what, :to_whom, :picture, :points
+  attributes :user_id, :when, :what, :to_whom, :picture, :points
 end
