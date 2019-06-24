@@ -84,8 +84,8 @@ Sibling should be able to...
   - * - add upvote
 
   # 2019-06-03
-    - add seed data to children files (niceDeeds, kindWords, milestones)
-    - add serializers -- fast JSON API
-    - mock user login
-    - add Redux and establish store
+    - add seed data to children files (niceDeeds, kindWords, milestones) - DONE
+    - add serializers -- fast JSON API - DONE
+    - mock user login - DONE
+    - add Redux and establish store - DONE
     - think about components
