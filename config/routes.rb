@@ -5,28 +5,11 @@ Rails.application.routes.draw do
 
   namespace :api  do
     namespace :v1   do
-      resources :users do
-        resources :milestones
-        resources :kind_words
-        resources :nice_deeds
-      end
+      resources :users
+      resources :milestones
+      resources :kind_words
+      resources :nice_deeds
     end
   end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-# resources :parents do
-#   resources :users, :path => "children"
-# end
-#
-# resources :users do
-#   resources :milestones
-# end
-#
-# resources :users do
-#   resources :kind_words
-# end
-#
-# resources :siblings do
-#   resources  :nice_deeds
-# end

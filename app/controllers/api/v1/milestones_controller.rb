@@ -3,11 +3,14 @@ class Api::V1::MilestonesController < ApplicationController
 
   # GET /milestones
   def index
-    @milestones = Milestone.all
-    milestones_json = MilestoneSerializer.new(@milestones).serialized_json
-    render json: milestones_json
-
-    # render json: @milestones
+    if logged_in?
+      @milestones = current_user.milestones
+      render json: MilestoneSerializer.new(@trips)
+    else
+      render json: {
+        error: "You must be looged in to see milestones"
+      }
+    end
   end
 
   # GET /milestones/1
