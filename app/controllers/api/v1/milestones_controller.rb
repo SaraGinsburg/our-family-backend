@@ -5,7 +5,7 @@ class Api::V1::MilestonesController < ApplicationController
   def index
     if logged_in?
       @milestones = current_user.milestones
-      render json: MilestoneSerializer.new(@trips)
+      render json: MilestoneSerializer.new(@milestones)
     else
       render json: {
         error: "You must be looged in to see milestones"
