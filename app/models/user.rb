@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_many :niceDeeds
   has_many :milestones
 
+  validates :first_name, :last_name, :username, presence: true
+  validates :username, uniqueness: true
+
 end
