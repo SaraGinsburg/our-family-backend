@@ -26,7 +26,7 @@ class Api::V1::MilestonesController < ApplicationController
     @milestone = Milestone.new(milestone_params)
 
     if @milestone.save
-      render json: @milestone, status: :created, location: @milestone
+      render json: @milestone, status: :created
     else
       render json: @milestone.errors, status: :unprocessable_entity
     end
