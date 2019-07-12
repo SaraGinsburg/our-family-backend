@@ -15,10 +15,10 @@ class Api::V1::MilestonesController < ApplicationController
 
   # GET /milestones/1
   def show
-    milestone_json = MilestoneSerializer.new(@milestone).serialized_json
-    render json: milestone_json
+    # milestone_json = MilestoneSerializer.new(@milestone).serialized_json
+    # render json: milestone_json
 
-    # render json: @milestone
+    render json: @milestone
   end
 
   # POST /milestones
@@ -26,9 +26,12 @@ class Api::V1::MilestonesController < ApplicationController
     @milestone = Milestone.new(milestone_params)
 
     if @milestone.save
-      render json: @milestone, status: :created
+      render json: MilestoneSerializer.new(@milestone), status: :created
     else
-      render json: @milestone.errors, status: :unprocessable_entity
+      error_msg = {
+        error: @milestone.errors.full_messages.to_sentence
+      }
+      render json: error_msg,  status: :unprocessable_entity
     end
   end
 
@@ -54,6 +57,6 @@ class Api::V1::MilestonesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def milestone_params
-      params.require(:milestone).permit(:when, :what, :picture, :user_id)
+      params.require(:milestone).permit(:heading, :when, :what, :picture, :user_id)
     end
 end
