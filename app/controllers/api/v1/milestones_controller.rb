@@ -23,7 +23,7 @@ class Api::V1::MilestonesController < ApplicationController
 
   # POST /milestones
   def create
-    @milestone = Milestone.new(milestone_params)
+    @milestone = current_user.milestones.build(milestone_params)
 
     if @milestone.save
       render json: MilestoneSerializer.new(@milestone), status: :created
@@ -38,9 +38,12 @@ class Api::V1::MilestonesController < ApplicationController
   # PATCH/PUT /milestones/1
   def update
     if @milestone.update(milestone_params)
-      render json: @milestone
+      render json: MilestoneSerializer.new(@milestone), status: :ok
     else
-      render json: @milestone.errors, status: :unprocessable_entity
+      error_msg = {
+        error: @milestone.errors.full_messages.to_sentence
+      }
+      render json: error_msg,  status: :unprocessable_entity
     end
   end
 
