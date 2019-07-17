@@ -49,7 +49,14 @@ class Api::V1::MilestonesController < ApplicationController
 
   # DELETE /milestones/1
   def destroy
-    @milestone.destroy
+    if @milestone.destroy
+      render json: {successMsg: "Milestone was successfully removed"}, status: :ok
+    else
+      error_msg = {
+        error: "Milestone was not removed"
+      }
+      render json: error_msg,  status: :unprocessable_entity
+    end
   end
 
   private
@@ -60,6 +67,6 @@ class Api::V1::MilestonesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def milestone_params
-      params.require(:milestone).permit(:heading, :when, :what, :picture, :user_id)
+      params.require(:milestone).permit(:heading, :when, :what, :picture)
     end
 end
