@@ -4,12 +4,12 @@ one:
   sibling_id: 1
   when: 2019-05-28
   what: MyString
-  to_whom: MyString
+  who: MyString
   points: 1
 
 two:
   sibling_id: 1
   when: 2019-05-28
   what: MyString
-  to_whom: MyString
+  who: MyString
   points: 1

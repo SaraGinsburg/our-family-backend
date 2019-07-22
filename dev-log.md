@@ -33,7 +33,7 @@
     ### Attributes
       when
       what
-      to_whom
+      who
       points (default to standard, unless exceptional)
       picture
       sibling_id

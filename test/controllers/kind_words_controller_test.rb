@@ -12,7 +12,7 @@ class KindWordsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create kind_word" do
     assert_difference('KindWord.count') do
-      post kind_words_url, params: { kind_word: { points: @kind_word.points, sibling_id: @kind_word.sibling_id, to_whom: @kind_word.to_whom, what: @kind_word.what, when: @kind_word.when } }, as: :json
+      post kind_words_url, params: { kind_word: { points: @kind_word.points, sibling_id: @kind_word.sibling_id, who: @kind_word.who, what: @kind_word.what, when: @kind_word.when } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class KindWordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update kind_word" do
-    patch kind_word_url(@kind_word), params: { kind_word: { points: @kind_word.points, sibling_id: @kind_word.sibling_id, to_whom: @kind_word.to_whom, what: @kind_word.what, when: @kind_word.when } }, as: :json
+    patch kind_word_url(@kind_word), params: { kind_word: { points: @kind_word.points, sibling_id: @kind_word.sibling_id, who: @kind_word.who, what: @kind_word.what, when: @kind_word.when } }, as: :json
     assert_response 200
   end
 

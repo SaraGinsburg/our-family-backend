@@ -4,7 +4,7 @@ class CreateNiceDeeds < ActiveRecord::Migration[5.0]
       t.integer :sibling_id
       t.date :when
       t.string :what
-      t.string :to_whom
+      t.string :who
       t.string :picture
       t.integer :points
 

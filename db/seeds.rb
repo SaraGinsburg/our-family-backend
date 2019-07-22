@@ -32,9 +32,9 @@
  shneor= User.find(11)
  meir= User.find(12)
 
-menachem.kindWords.create(when:"2019-06-01", what:"Menachem told Hadassah that she says nicely the Tehillim", to_whom:"Hadassah", points:0.5)
-meir.kindWords.create(when:"2019-06-01", what:"Meir told Shneor that he is nice", to_whom:"Shneor", points:0.5)
-mussiale.kindWords.create(when:"2019-06-01", what:"Mussiale told Dovid that he says nicely the Tehillim and 'Kol HaKavod'", to_whom:"Dovid", points:0.5)
+menachem.kindWords.create(when:"2019-06-01", what:"Menachem told Hadassah that she says nicely the Tehillim", who:"Hadassah", points:0.5)
+meir.kindWords.create(when:"2019-06-01", what:"Meir told Shneor that he is nice", who:"Shneor", points:0.5)
+mussiale.kindWords.create(when:"2019-06-01", what:"Mussiale told Dovid that he says nicely the Tehillim and 'Kol HaKavod'", who:"Dovid", points:0.5)
 dovid.milestones.create(when:"2019-06-02", what:"birthday party with friends", picture:"https://photos.google.com/album/AF1QipPKge-I_LCyoOtJ6C2dYHOswQysH3mo76htEE53")
 dovid.milestones.create(when:"2019-06-01", what:"Dovid finished the whole sefer Tehillim, which he started about 4 months ago")
-shneor.niceDeeds.create(when:"2019-06-01", what:"Shneor shared his snack with Menachem", to_whom:"Menachem", points:1)
+shneor.niceDeeds.create(when:"2019-06-01", what:"Shneor shared his snack with Menachem", who:"Menachem", points:1)

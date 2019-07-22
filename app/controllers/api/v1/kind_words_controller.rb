@@ -57,6 +57,6 @@ class Api::V1::KindWordsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def kind_word_params
-      params.require(:kind_word).permit(:user_id, :when, :what, :to_whom, :points)
+      params.require(:kind_word).permit(:heading, :when, :what, :who, :points)
     end
 end

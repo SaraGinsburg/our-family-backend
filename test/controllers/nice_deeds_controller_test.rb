@@ -12,7 +12,7 @@ class NiceDeedsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create nice_deed" do
     assert_difference('NiceDeed.count') do
-      post nice_deeds_url, params: { nice_deed: { picture: @nice_deed.picture, points: @nice_deed.points, sibling_id: @nice_deed.sibling_id, to_whom: @nice_deed.to_whom, what: @nice_deed.what, when: @nice_deed.when } }, as: :json
+      post nice_deeds_url, params: { nice_deed: { picture: @nice_deed.picture, points: @nice_deed.points, sibling_id: @nice_deed.sibling_id, who: @nice_deed.who, what: @nice_deed.what, when: @nice_deed.when } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class NiceDeedsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update nice_deed" do
-    patch nice_deed_url(@nice_deed), params: { nice_deed: { picture: @nice_deed.picture, points: @nice_deed.points, sibling_id: @nice_deed.sibling_id, to_whom: @nice_deed.to_whom, what: @nice_deed.what, when: @nice_deed.when } }, as: :json
+    patch nice_deed_url(@nice_deed), params: { nice_deed: { picture: @nice_deed.picture, points: @nice_deed.points, sibling_id: @nice_deed.sibling_id, who: @nice_deed.who, what: @nice_deed.what, when: @nice_deed.when } }, as: :json
     assert_response 200
   end
 
