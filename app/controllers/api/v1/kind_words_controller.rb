@@ -6,47 +6,57 @@ class Api::V1::KindWordsController < ApplicationController
 
   # GET /kind_words
   def index
-
-    @kind_words = KindWord.all
-
-    kind_words_json =KindWordSerializer.new(@kind_words).serialized_json
-    render json: kind_words_json
-
-    # render json: @kind_words
+    if logged_in?
+      @kind_words = current_user.kindWords
+      render json: KindWordSerializer.new(@kind_words)
+    else
+      render json: {
+        error: "You must be looged in to see kindWords"
+      }
+    end
   end
 
   # GET /kind_words/1
   def show
-    # render json: @kind_word
-    kind_word_json =KindWordSerializer.new(@kind_word).serialized_json
-    render json: kind_word_json
-
-
+      render json: @kind_word
   end
 
   # POST /kind_words
   def create
-    @kind_word = KindWord.new(kind_word_params)
+    @kind_word = current_user.kindWords.build(kind_word_params)
 
     if @kind_word.save
-      render json: @kind_word, status: :created, location: @kind_word
+      render json: KindWordSerializer.new(@kind_word), status: :created
     else
-      render json: @kind_word.errors, status: :unprocessable_entity
+      error_msg = {
+        error: @kind_word.errors.full_messages.to_sentence
+      }
+      render json: error_msg,  status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /kind_words/1
   def update
     if @kind_word.update(kind_word_params)
-      render json: @kind_word
+      render json: KindWordSerializer.new(@kind_word), status: :ok
     else
-      render json: @kind_word.errors, status: :unprocessable_entity
+      rerror_msg = {
+        error: @kind_word.errors.full_messages.to_sentence
+      }
+      render json: error_msg,  status: :unprocessable_entity
     end
   end
 
   # DELETE /kind_words/1
   def destroy
-    @kind_word.destroy
+    if @kind_word.destroy
+      render json: {successMsg: "KindWord  was successfully removed"}, status: :ok
+    else
+      error_msg = {
+        error: "KindWord was not removed"
+      }
+      render json: error_msg,  status: :unprocessable_entity
+    end
   end
 
   private
@@ -57,6 +67,6 @@ class Api::V1::KindWordsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def kind_word_params
-      params.require(:kind_word).permit(:heading, :when, :what, :who, :points)
+      params.require(:kind_word).permit(:heading, :when, :what, :who)
     end
 end
