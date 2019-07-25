@@ -24,6 +24,8 @@ class Api::V1::KindWordsController < ApplicationController
   # POST /kind_words
   def create
     @kind_word = current_user.kindWords.build(kind_word_params)
+    
+    current_user.points_earned += 1
 
     if @kind_word.save
       render json: KindWordSerializer.new(@kind_word), status: :created

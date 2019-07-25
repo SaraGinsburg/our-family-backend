@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190722025336) do
+ActiveRecord::Schema.define(version: 20190725135244) do
 
   create_table "kind_words", force: :cascade do |t|
     t.integer  "user_id"
     t.date     "when"
     t.text     "what"
-    t.string   "who"
-    t.float    "points"
+    t.integer  "who"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.boolean  "approved",   default: true
@@ -38,9 +37,8 @@ ActiveRecord::Schema.define(version: 20190722025336) do
     t.integer  "user_id"
     t.date     "when"
     t.text     "what"
-    t.string   "who"
+    t.integer  "who"
     t.string   "picture"
-    t.float    "points"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.boolean  "approved",   default: true
@@ -60,7 +58,7 @@ ActiveRecord::Schema.define(version: 20190722025336) do
     t.string   "first_name"
     t.date     "birthdate"
     t.string   "picture"
-    t.string   "points_earned"
+    t.integer  "points_earned"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "last_name"
