@@ -23,15 +23,34 @@ class Api::V1::KindWordsController < ApplicationController
 
   # POST /kind_words
   def create
+
     @kind_word = current_user.kindWords.build(kind_word_params)
-    
-    current_user.points_earned += 1
+
+    @reporting_user = User.find(current_user.id)
+    @reporting_user.points_earned += 1
+
+    @who_user = User.find(params[:who])
+    @who_user.points_earned += 1
 
     if @kind_word.save
       render json: KindWordSerializer.new(@kind_word), status: :created
     else
       error_msg = {
         error: @kind_word.errors.full_messages.to_sentence
+      }
+      render json: error_msg,  status: :unprocessable_entity
+    end
+
+    if !@who_user.save
+      error_msg = {
+        error: @user.errors.full_messages.to_sentence
+      }
+      render json: error_msg,  status: :unprocessable_entity
+    end
+
+    if !@reporting_user.save
+      error_msg = {
+        error: @user.errors.full_messages.to_sentence
       }
       render json: error_msg,  status: :unprocessable_entity
     end
@@ -69,6 +88,6 @@ class Api::V1::KindWordsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def kind_word_params
-      params.require(:kind_word).permit(:heading, :when, :what, :who)
+      params.require(:kind_word).permit(:id, :heading, :when, :what, :who)
     end
 end
