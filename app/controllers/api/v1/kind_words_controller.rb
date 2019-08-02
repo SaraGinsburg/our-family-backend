@@ -27,10 +27,10 @@ class Api::V1::KindWordsController < ApplicationController
     @kind_word = current_user.kindWords.build(kind_word_params)
 
     @reporting_user = User.find(current_user.id)
-    @reporting_user.points_earned += 1
+    @reporting_user.points_earned += @kind_word.points
 
     @who_user = User.find(params[:who])
-    @who_user.points_earned += 1
+    @who_user.points_earned += @kind_word.points
 
     if @kind_word.save
       render json: KindWordSerializer.new(@kind_word), status: :created
@@ -69,8 +69,17 @@ class Api::V1::KindWordsController < ApplicationController
   end
 
   # DELETE /kind_words/1
+
+
   def destroy
     if @kind_word.destroy
+      @reporting_user = User.find(current_user.id)
+      @reporting_user.points_earned -= @kind_word.points
+      @reporting_user.save
+
+      @who_user = User.find(@kind_word.who)
+      @who_user.points_earned -= @kind_word.points
+      @who_user.save
       render json: {successMsg: "KindWord  was successfully removed"}, status: :ok
     else
       error_msg = {
@@ -88,6 +97,6 @@ class Api::V1::KindWordsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def kind_word_params
-      params.require(:kind_word).permit(:id, :heading, :when, :what, :who)
+      params.require(:kind_word).permit(:id, :heading, :when, :what, :who, :points)
     end
 end

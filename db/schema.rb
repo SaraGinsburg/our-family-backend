@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190725135244) do
+ActiveRecord::Schema.define(version: 20190729035121) do
 
   create_table "kind_words", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20190725135244) do
     t.datetime "updated_at",                null: false
     t.boolean  "approved",   default: true
     t.string   "heading"
+    t.integer  "points",     default: 1
   end
 
   create_table "milestones", force: :cascade do |t|
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20190725135244) do
     t.datetime "updated_at",                null: false
     t.boolean  "approved",   default: true
     t.string   "heading"
+    t.integer  "points",     default: 2
   end
 
   create_table "parents", force: :cascade do |t|
