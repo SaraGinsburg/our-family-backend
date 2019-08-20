@@ -3,44 +3,83 @@ class Api::V1::NiceDeedsController < ApplicationController
 
   # GET /nice_deeds
   def index
-    @nice_deeds = NiceDeed.all
-    nice_deeds_json = NiceDeedSerializer.new(@nice_deeds).serialized_json
-    render json: nice_deeds_json
-
-    # render json: @nice_deeds
+    if logged_in?
+      @nice_deeds = current_user.niceDeeds
+      render json: NiceDeedSerializer.new(@nice_deeds)
+    else
+      render json: {
+        error: "You must be looged in to see NiceDeeds"
+      }
+    end
   end
 
   # GET /nice_deeds/1
   def show
-    nice_deed_json = NiceDeedSerializer.new(@nice_deed).serialized_json
-    render json: nice_deed_json
-
-    # render json: @nice_deed
+    render json: @nice_deed
   end
 
   # POST /nice_deeds
   def create
-    @nice_deed = NiceDeed.new(nice_deed_params)
+    @nice_deed = current_user.niceDeeds.build(nice_deed_params)
+
+    @reporting_user = User.find(current_user.id)
+    @reporting_user.points_earned += @nice_deed.points
+
+    @who_user = User.find(params[:who])
+    @who_user.points_earned += @nice_deed.points
 
     if @nice_deed.save
-      render json: @nice_deed, status: :created, location: @nice_deed
+      render json: NiceDeedSerializer.new(@nice_deed), status: :created
     else
-      render json: @nice_deed.errors, status: :unprocessable_entity
+      error_msg = {
+        error: @nice_deed.errors.full_messages.to_sentence
+      }
+      render json: error_msg,  status: :unprocessable_entity
+    end
+
+    if !@who_user.save
+      error_msg = {
+        error: @user.errors.full_messages.to_sentence
+      }
+      render json: error_msg,  status: :unprocessable_entity
+    end
+
+    if !@reporting_user.save
+      error_msg = {
+        error: @user.errors.full_messages.to_sentence
+      }
+      render json: error_msg,  status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /nice_deeds/1
   def update
     if @nice_deed.update(nice_deed_params)
-      render json: @nice_deed
+      render json: NiceDeedSerializer.new(@nice_deed), status: :ok
     else
-      render json: @nice_deed.errors, status: :unprocessable_entity
-    end
+      rerror_msg = {
+        error: @nice_deed.errors.full_messages.to_sentence
+      }
+      render     end
   end
 
   # DELETE /nice_deeds/1
   def destroy
-    @nice_deed.destroy
+    if @nice_deed.destroy
+      @reporting_user = User.find(current_user.id)
+      @reporting_user.points_earned -= @nice_deed.points
+      @reporting_user.save
+
+      @who_user = User.find(@nice_deed.who)
+      @who_user.points_earned -= @nice_deed.points
+      @who_user.save
+      render json: {successMsg: "NiceDeed  was successfully removed"}, status: :ok
+    else
+      error_msg = {
+        error: "NiceDeed was not removed"
+      }
+      render json: error_msg,  status: :unprocessable_entity
+    end
   end
 
   private
@@ -51,6 +90,6 @@ class Api::V1::NiceDeedsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def nice_deed_params
-      params.require(:nice_deed).permit(:user_id, :when, :what, :who, :picture, :points)
+      params.require(:nice_deed).permit(:id, :heading, :when, :what, :who,  :points)
     end
 end
