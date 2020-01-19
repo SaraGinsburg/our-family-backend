@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tests
   post "/api/v1/login", to: "api/v1/sessions#create"
   post "/api/v1/signup", to: "api/v1/users#create"
   delete "/api/v1/logout", to: "api/v1/sessions#destroy"
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
       resources :milestones
       resources :kind_words
       resources :nice_deeds
-      resources :users
+      resources :users, only: [:index, :create, :update, :delete, :show]
     end
   end
 
