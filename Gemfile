@@ -26,9 +26,16 @@ gem 'pry'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 gem 'fast_jsonapi'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # Boostrap RSpec
+  gem 'rspec-rails', '~> 3.8'
+  # Add support for Capybara system testing
+  gem 'capybara'
+  # Use Foreman to manage multiple processes
+  gem 'foreman', '~> 0.87.1'
 end
 
 group :development do
